@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GroceryStore.Model
+﻿namespace GroceryStore.Model
 {
     public class Customer
     {
@@ -12,10 +6,6 @@ namespace GroceryStore.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
-
-        public string FullName() {
-            return $"{FirstName} {LastName}";
-        }
 
     }
 }
