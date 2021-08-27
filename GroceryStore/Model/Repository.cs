@@ -59,7 +59,7 @@ namespace GroceryStore.Model
                 var cmd = conn.CreateCommand();
                 cmd.CommandText = @"
                     INSERT INTO CUSTOMER(ID, FIRST_NAME, LAST_NAME, AGE)
-                    VALUES($Id, $FirstName, $LastName, $Age);
+                    VALUES($Id, $FirstName, $LastName, $Age)
                 ";
                 var param = cmd.Parameters;
                 param.AddWithValue("$Id", c.Id);
@@ -93,11 +93,11 @@ namespace GroceryStore.Model
                 using (var reader = cmd.ExecuteReader())
                 {
                     reader.Read();
-                    if (reader.GetInt32(0) == 0)
+                    if (reader.GetInt32(0) == 0) // if value is 0 the table doesn't exist, if value is 1 table exists
                     {
                         reader.Close();
                         var createCommads = new List<string> {
-                            "CREATE TABLE CUSTOMER(ID INTEGER PRIMARY KEY, FIRST_NAME VARCHAR, LAST_NAME VARCHAR, AGE INT)"
+                            "CREATE TABLE CUSTOMER(ID INTEGER PRIMARY KEY, FIRST_NAME VARCHAR, LAST_NAME VARCHAR, AGE INT)"                            
                         };
                         foreach (var str in createCommads)
                         {

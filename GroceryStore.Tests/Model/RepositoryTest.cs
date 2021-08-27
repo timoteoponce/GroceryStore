@@ -16,5 +16,18 @@ namespace GroceryStore.Tests
             Assert.AreEqual(c, repo.GetCustomers()[0]);
         }
 
+        [TestMethod]
+        public void TestSaveMultipleCustomers()
+        {
+            var repo = new Repository();
+            repo.DeleteDatabase();
+            for (int i = 0; i < 100; i++)
+            {
+                var c = new Customer { Id = i, FirstName = $"Kevin-{i}", LastName = "Arnold", Age = 16 + i };
+                repo.Save(c);
+            }
+            Assert.AreEqual(100, repo.GetCustomers().Count);
+        }
+
     }
 }
